@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {  
+    "baseUrl": ".",  
+    "target": "es2016",                                
+    "module": "commonjs",   
+    "moduleResolution": "node",                            
+    "esModuleInterop": true,                            
+    "forceConsistentCasingInFileNames": true,          
+    "strict": true,                                      
+    "noImplicitAny": true,                            
+    "skipLibCheck": true                               
+  }
+}
