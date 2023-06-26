@@ -1,15 +1,15 @@
-import { Load, Callback } from '../../types/type';
+import { ILoad, Callback } from '../../types/type';
 
 class Loader {
     public readonly baseLink: string;
-    public options: Load;
-    constructor(baseLink: string, options: Load) {
+    public options: ILoad;
+    constructor(baseLink: string, options: ILoad) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     getResp(
-        { endpoint, options = {} }: { endpoint: string; options?: Load },
+        { endpoint, options = {} }: { endpoint: string; options?: ILoad },
         callback: Callback = () => {
             console.error('No callback for GET response');
         }
@@ -27,7 +27,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: Load, endpoint: string) {
+    makeUrl(options: ILoad, endpoint: string) {
         const urlOptions: { [index: string]: string } = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -38,7 +38,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Callback, options: Load = {}) {
+    load(method: string, endpoint: string, callback: Callback, options: ILoad = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

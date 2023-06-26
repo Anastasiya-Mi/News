@@ -1,5 +1,5 @@
 import AppController from '../controller/controller';
-import { RequestSource } from '../../types/type';
+import { IRequestSource } from '../../types/type';
 import { AppView } from '../view/appView';
 
 class App {
@@ -11,10 +11,10 @@ class App {
     }
 
     start() {
-        (<HTMLTemplateElement>document.querySelector('.sources')).addEventListener('click', (e) =>
-            this.controller.getNews(e, (data: RequestSource) => this.view.drawNews(data))
+        (<HTMLElement>document.querySelector('.sources')).addEventListener('click', (e) =>
+            this.controller.getNews(e, (data: IRequestSource) => this.view.drawNews(data))
         );
-        this.controller.getSources((data: RequestSource) => this.view.drawSources(data));
+        this.controller.getSources((data: IRequestSource) => this.view.drawSources(data));
     }
 }
 

@@ -1,5 +1,5 @@
-export interface Articles {
-    source: sourceItems;
+export interface IArticles {
+    source: ISourceItems;
     author: string;
     title: string;
     description: string;
@@ -9,12 +9,12 @@ export interface Articles {
     content: string;
 }
 
-export interface sourceItems {
+export interface ISourceItems {
     id: string;
     name: string;
 }
 
-export interface Source {
+export interface ISource {
     category: string;
     country: string;
     description: string;
@@ -24,15 +24,16 @@ export interface Source {
     url: string;
 }
 
-export interface RequestSource {
-    articles?: Articles[];
-    sources?: Source[];
+export interface IRequestSource {
+    articles?: IArticles[];
+    sources?: ISource[];
     status?: string;
     endpoint: 'sources' | 'everything';
 }
 
-export interface Load {
+export interface ILoad {
     sources?: string;
     apiKey?: string;
 }
-export type Callback = (data: RequestSource) => void;
+
+export type Callback = (data: IRequestSource) => void;
